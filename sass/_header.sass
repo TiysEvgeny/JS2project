@@ -1,0 +1,223 @@
+header
+  border-style: solid
+  border-width: 1px
+  border-color: #ececec
+  box-sizing: border-box
+  background-color: #ffffff
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.17)
+  width: 100%
+  height: 100px
+
+.subcontainer
+  display: flex
+  justify-content: space-between
+  height: 100%
+
+.logo-and-search
+  display: flex
+
+.logo
+  display: flex
+  text-decoration: none
+  color: #222222
+  font-size: 27px
+  font-weight: 300
+  line-height: 32px
+  text-align: center
+  align-items: center
+  &:hover
+    text-decoration: none
+  img
+    margin-right: 13px
+
+.logo > span > span
+  color: #f16d7f
+  font-size: 27px
+  font-weight: 900
+  line-height: 32px
+  text-align: center
+  margin-right: 37px
+
+.search
+  display: flex
+  align-items: center
+
+.drop-down-button
+  border-bottom-left-radius: 3px
+  border-top-left-radius: 3px
+  border-style: solid
+  border-width: 1px
+  border-color: #e6e6e6
+  box-sizing: border-box
+  background: -webkit-linear-gradient(left, #f9f9f9 0%, #f5f5f5 100%)
+  background: -o-linear-gradient(left, #f9f9f9 0%, #f5f5f5 100%)
+  background: linear-gradient(to right, #f9f9f9 0%, #f5f5f5 100%)
+  width: 87px
+  height: 38px
+  position: relative
+  .fa-sort-down
+    color: #838383
+    line-height: 38px
+    margin-left: 8px
+    margin-bottom: 2px
+  &__drop-menu
+    background-color: #fff
+    position: absolute
+    text-align: left
+    padding: 22px 13px
+    z-index: 1
+    display: none
+    h3
+      font-size: 14px
+      font-weight: normal
+      font-style: normal
+      font-stretch: normal
+      line-height: 2.29
+      letter-spacing: 0.4px
+      color: #232323
+      margin-bottom: 10px
+      border-bottom: solid 1px #e8e8e8
+      width: 235px
+  &__drop-list
+    list-style-type: none
+    padding-left: 0
+    margin-bottom: 30px
+    &:last-child
+      margin-bottom: 0
+    a
+      text-decoration: none
+      color: #4e4e4e
+  &:hover &__drop-menu
+    display: block
+
+
+
+  color: #222222
+  font-size: 14px
+  font-weight: 300
+  line-height: 32px
+  text-align: center
+
+.search select:hover
+  background-color: #f5f5f5
+
+.search input[type="text"]
+  border-bottom-right-radius: 3px
+  border-top-right-radius: 3px
+  border-style: solid
+  border-width: 1px
+  border-color: #e6e6e6
+  box-sizing: border-box
+  background-color: #ffffff
+  width: 317px
+  height: 38px
+  padding-left: 15px
+
+.search button
+  background-color: #ffffff
+  border: solid 1px #e8e8e8
+  color: #a4a4a4
+  font-size: 14px
+  height: 38px
+  font-weight: 400
+  transition: all 0.5s
+  &:hover
+    background-color: #f16d7f
+    border: solid 1px #e8e8e8
+
+.cart-and-account
+  display: flex
+  align-items: center
+
+.cart-and-account img
+  margin-right: 26px
+
+.cart-and-account img:hover
+  background-color: #f5f5f5
+
+.account
+  background-color: #f16d7f
+  color: #fff
+  height: 38px
+  line-height: 34px
+  padding-left: 19px
+  padding-right: 12px
+  box-sizing: border-box
+  border: #f16d7f 2px solid
+  transition: all 0.5s
+  .fa-sort-down
+    color: #fff
+    line-height: 34px
+    margin-left: 8px
+    margin-bottom: 2px
+    transition: color 0.5s
+  &:hover
+    background-color: #fff
+    color: #f16d7f
+    .fa-sort-down
+      color: #f16d7f
+
+
+nav
+  width: 1600px
+  height: 51px
+  .main-menu
+    display: flex
+    justify-content: center
+    list-style-type: none
+    position: relative
+    a
+      text-decoration: none
+      color: #222222
+      font-size: 14px
+      font-weight: 700
+      line-height: 26px
+      text-transform: uppercase
+      display: block
+      padding: 19px 23px 22px
+      transition: all 0.5s
+      &:hover
+        color: #a4a4a4
+    &__mega-menu
+      position: absolute
+      background-color: #fff
+      z-index: 1
+      display: none
+      border: 1px solid #ececec
+      top: 50px
+      .arrow-up
+        width: 11px
+        height: 11px
+        border-left: 1px solid #ececec
+        border-top: 1px solid #ececec
+        transform: rotate(45deg)
+        -webkit-transform: rotate(45deg)
+        top: -6px
+        left: 30px
+        z-index: 2
+        background-color: #fff
+        position: absolute
+
+    &__menu-block
+      h3
+        font-size: 14px
+        font-weight: normal
+        font-style: normal
+        font-stretch: normal
+        line-height: 2.29
+        letter-spacing: 0.4px
+        color: #232323
+        margin-bottom: 10px
+        border-bottom: solid 1px #e8e8e8
+        width: 235px
+      ul
+        list-style-type: none
+        padding-left: 0
+        margin-bottom: 30px
+      &:last-child
+        margin-bottom: 0
+      a
+        text-decoration: none
+        color: #4e4e4e
+.women:hover .main-menu__mega-menu
+  display: flex
