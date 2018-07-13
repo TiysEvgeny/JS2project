@@ -1,6 +1,5 @@
 {
-    "users": [
-        {
+    "users": [{
             "id": 1,
             "name": "Petya"
         },
@@ -13,8 +12,7 @@
             "name": "Stepa"
         }
     ],
-    "goods": [
-        {
+    "goods": [{
             "id": 1,
             "name": "T-shirt1",
             "price": 52,
@@ -68,24 +66,22 @@
             "quantity": 5
         }
     ],
-    "cart": [
-        {
-            "total": 104,
-            "countGoods": 2,
-            "contents": [
-                {
-                    "id": 5,
-                    "name": "T-shirt5",
-                    "price": 52,
-                    "quantity": 1
-    },
-                {
-                    "id": 2,
-                    "name": "T-shirt2",
-                    "price": 52,
-                    "quantity": 1
+    "cart": {
+        "total": 104,
+        "countGoods": 2,
+        "content": [
+            {
+                "id": 5,
+                "name": "T-shirt5",
+                "price": 52,
+                "quantity": 1
+            },
+            {
+                "id": 2,
+                "name": "T-shirt2",
+                "price": 52,
+                "quantity": 1
+            }
+        ]
     }
-  ]
-}
-    ]
 }
