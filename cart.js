@@ -1,11 +1,11 @@
-//'use strict';
+'use strict';
 
 function buildCart() {
     $('.cart-and-account__cart-content').empty();
     $.get('http://localhost:3000/cart', {}, function (items) {
-        var $ul=$('<ul/>');
-        items.forEach (function (item) {
-            var $li=$('<li/>');
+        var $ul = $('<ul/>');
+        items.content.forEach (function (item) {
+            var $li = $('<li/>');
             var $itemName=$('<div/>', {
                 class: 'itemName',
                 text: item.name
@@ -16,7 +16,20 @@ function buildCart() {
             });
             $ul.append($li);
             $li.append($itemName);
-            $li.append($itemQuantity)        
+            $li.append($itemQuantity);
+            $('.cart-and-account__cart-content').append($ul);
+            var $total = $('<div/>', {
+                class: 'total',
+            });
+            var $totalLabel = $('<div/>', {
+                text: 'TOTAL'
+            });
+            var $totalPrice = $('<div/>', {
+                text: '$' + items.total
+            });
+            $total.append($totalLabel);
+            $total.append($totalPrice);
+            $('.cart-and-account__cart-content').append($total);
         });
     },'json');
 }
