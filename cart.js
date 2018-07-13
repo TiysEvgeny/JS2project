@@ -17,20 +17,21 @@ function buildCart() {
             $ul.append($li);
             $li.append($itemName);
             $li.append($itemQuantity);
-            $('.cart-and-account__cart-content').append($ul);
-            var $total = $('<div/>', {
-                class: 'total',
-            });
-            var $totalLabel = $('<div/>', {
-                text: 'TOTAL'
-            });
-            var $totalPrice = $('<div/>', {
-                text: '$' + items.total
-            });
-            $total.append($totalLabel);
-            $total.append($totalPrice);
-            $('.cart-and-account__cart-content').append($total);
         });
+        var $total = $('<div/>', {
+            class: 'total',
+        });
+        var $totalLabel = $('<div/>', {
+            text: 'TOTAL'
+        });
+        var $totalPrice = $('<div/>', {
+            text: '$' + items.total
+        });
+        $('.cart-and-account__cart-content').append($ul);
+        $total.append($totalLabel);
+        $total.append($totalPrice);    
+        $('.cart-and-account__cart-content').append($total);
+        
     },'json');
 }
 
