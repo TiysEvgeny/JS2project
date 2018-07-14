@@ -2,16 +2,18 @@
 
 function buildCart() {
     $('.cart-and-account__cart-content').empty();
+    $('.cart-and-account__cart-content').append($('<div/>', {class: 'arrow-up'}));
     $.get('http://localhost:3000/cart', {}, function (items) {
         var $ul = $('<ul/>');
         items.content.forEach (function (item) {
             var $li = $('<li/>');
             var $itemName=$('<div/>', {
-                class: 'itemName',
+                class: 'cart-and-account__itemName',
+                itemId: item.id,
                 text: item.name
             });
             var $itemQuantity=$('<div/>', {
-                class: 'itemQuantity',
+                class: 'cart-and-account__itemQuantity',
                 text: item.quantity + ' X $' + item.price
             });
             $ul.append($li);
@@ -39,7 +41,7 @@ function buildCart() {
     $(function(){
         buildCart();
       $('.items__item').on('click', '.items__add-to-cart-link', function(event){
-          
+
           event.preventDefault();
       });
     }); 
