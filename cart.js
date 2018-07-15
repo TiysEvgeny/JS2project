@@ -50,35 +50,41 @@ function buildCart() {
             var $goodName = $(this).parent().attr('name');
             var $goodPrice = $(this).parent().attr('price');
             var $cartItem = $('.cart-and-account__itemName[itemId="' + $goodId + '"]')
-            var quantity = $.get('http://localhost:3000/goods/' + $goodId, {}, function (item) {
-                return item.quantity;
-            }, 'json');
-            if (quantity < +$cartItem.attr('quantity') + 1) {
-                alert("На складе недостаточно товара!");
-                return;
-            } else {
-                if ($cartItem.length) {
+            $.get('http://localhost:3000/goods/' + $goodId,
+            {},
+            function (item) {
+                if (item.quantity < +$cartItem.attr('quantity') + 1) {
+                    alert("На складе недостаточно товара!");
+                    return;
+                } else {
                     var good = {
                         id: $goodId,
                         name: $goodName,
                         price: $goodPrice,
-                        quantity: +$cartItem.attr('quantity') + 1
+                        quantity: 1
                     };
-                    $.ajax({
-                        url: 'http://localhost:3000/cart/' + $goodId,
-                        type: 'PUT',
-                        data: good,
-                        success: function () {
+                    if ($cartItem.length) {
+                        good.quantity = +$cartItem.attr('quantity') + 1
+                        $.ajax({
+                            url: 'http://localhost:3000/cart/' + $goodId,
+                            type: 'PUT',
+                            data: good,
+                            success: function () {
+                                buildCart();
+                                return {
+                                    result: 1
+                                };
+                            }
+                        });
+                    } else {
+                        $.post('http://localhost:3000/cart/',
+                        good,
+                        function (result) {
                             buildCart();
-                            return {
-                                result: 1
-                            };
-                        }
-                    });
-                } else{
-
+                        }, 'json');
+                    }
                 }
-            }
+            }, 'json');
             event.preventDefault();
         });
     });
