@@ -20,10 +20,27 @@ function buildCart() {
                 class: 'cart-and-account__itemQuantity',
                 text: item.quantity + ' X $' + item.price
             });
+            var $icon = $('<div/>', {
+                class: 'cart-and-account__itemIcon'
+            });
+            var $container = $('<div/>', {
+                class: 'cart-and-account__itemContainer',
+            });
+            var $remove = $('<span/>', {
+                class: 'cart-and-account__removeItem'
+            });
+            var $x = $('<i/>', {
+                class: 'fas fa-times-circle'
+            });
+
             totalPrice += item.quantity * item.price
             $ul.append($li);
-            $li.append($itemName);
-            $li.append($itemQuantity);
+            $li.append($icon);
+            $li.append($container);
+            $li.append($remove);
+            $remove.append($x);
+            $container.append($itemName);
+            $container.append($itemQuantity);
         });
         var $total = $('<div/>', {
             class: 'total',
