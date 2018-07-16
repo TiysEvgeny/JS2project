@@ -13,7 +13,9 @@ function buildCart() {
             var $itemName = $('<div/>', {
                 class: 'cart-and-account__itemName',
                 itemId: item.id,
+                itemName: item.name,
                 quantity: item.quantity,
+                itemPrice: item.price,
                 text: item.name
             });
             var $itemQuantity = $('<div/>', {
@@ -103,6 +105,40 @@ function buildCart() {
                 }
             }, 'json');
             event.preventDefault();
+        });
+        $('.cart-and-account__cart-content').on('click', '.cart-and-account__removeItem',function(event){
+            console.log('Клик');
+            event.preventDefault();
+            var $item = $(this).parent().children('.cart-and-account__itemContainer').children('.cart-and-account__itemName');
+            var $itemId = $item.attr('itemId');
+            var $itemName = $item.attr('itemName');
+            console.log($itemName);
+            var $itemPrice = $item.attr('itemPrice');
+            var $quantity = $item.attr('quantity');
+            var $itemData = {
+                id: $itemId,
+                name: $itemName,
+                price: $itemPrice,
+                quantity: +$quantity-1
+            };
+            if($quantity<2){
+                $.ajax({
+                    url:'http://localhost:3000/cart/' + $itemId,
+                    type: 'DELETE',
+                    success: function() {
+                        buildCart();
+                    }
+                });
+            }else{
+                $.ajax({
+                    url: 'http://localhost:3000/cart/' + $itemId,
+                    type: 'PUT',
+                    data: $itemData,
+                    success: function() {
+                        buildCart();
+                    }
+                });
+            }
         });
     });
 })(jQuery);
