@@ -126,7 +126,12 @@ function buildCart() {
                     url:'http://localhost:3000/cart/' + $itemId,
                     type: 'DELETE',
                     success: function() {
-                        buildCart();
+                        $item.parent().parent().remove();
+                        var $totalPriceElement=$('.total').children('div:eq(1)')
+                        var $totalPrice=$totalPriceElement.text().match(/\d+/)[0];
+                        var $newPrice=$totalPrice-$itemPrice;
+                        $totalPriceElement.remove();
+                        $('.total').append($('<div/>', {text: '$'+ $newPrice}));                
                     }
                 });
             }else{
