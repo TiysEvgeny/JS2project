@@ -107,31 +107,34 @@ function buildCart() {
             event.preventDefault();
         });
         $('.cart-and-account__cart-content').on('click', '.cart-and-account__removeItem',function(event){
-            console.log('Клик');
             event.preventDefault();
             var $item = $(this).parent().children('.cart-and-account__itemContainer').children('.cart-and-account__itemName');
             var $itemId = $item.attr('itemId');
             var $itemName = $item.attr('itemName');
-            console.log($itemName);
             var $itemPrice = $item.attr('itemPrice');
             var $quantity = $item.attr('quantity');
+            $quantity--;
+            $item.attr('quantity', $quantity);
             var $itemData = {
                 id: $itemId,
                 name: $itemName,
                 price: $itemPrice,
-                quantity: +$quantity-1
+                quantity: $quantity
             };
-            if($quantity<2){
+            function changeTotalprice(itemPrice){
+                var $totalPriceElement=$('.total').children('div:eq(1)');
+                var $totalPrice=$totalPriceElement.text().match(/\d+/)[0];
+                var $newPrice=$totalPrice-itemPrice;
+                $totalPriceElement.remove();
+                $('.total').append($('<div/>', {text: '$'+ $newPrice}));
+            };
+            if($quantity<1){
                 $.ajax({
                     url:'http://localhost:3000/cart/' + $itemId,
                     type: 'DELETE',
                     success: function() {
                         $item.parent().parent().remove();
-                        var $totalPriceElement=$('.total').children('div:eq(1)')
-                        var $totalPrice=$totalPriceElement.text().match(/\d+/)[0];
-                        var $newPrice=$totalPrice-$itemPrice;
-                        $totalPriceElement.remove();
-                        $('.total').append($('<div/>', {text: '$'+ $newPrice}));                
+                        changeTotalprice($itemPrice);                
                     }
                 });
             }else{
@@ -140,7 +143,12 @@ function buildCart() {
                     type: 'PUT',
                     data: $itemData,
                     success: function() {
-                        buildCart();
+                        $item.parent().children('.cart-and-account__itemQuantity').remove();
+                        $item.parent().append($('<div/>', {
+                            class: 'cart-and-account__itemQuantity',
+                            text:  $quantity + ' X $' + $itemPrice
+                        }));
+                        changeTotalprice($itemPrice);
                     }
                 });
             }
