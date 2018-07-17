@@ -22,8 +22,9 @@ function buildCart() {
                 class: 'cart-and-account__itemQuantity',
                 text: item.quantity + ' X $' + item.price
             });
-            var $icon = $('<div/>', {
-                class: 'cart-and-account__itemIcon'
+            var $icon = $('<img/>', {
+                class: 'cart-and-account__itemIcon',
+                src: item.img
             });
             var $container = $('<div/>', {
                 class: 'cart-and-account__itemContainer',
@@ -68,6 +69,8 @@ function buildCart() {
             var $goodId = $(this).parent().attr('itemId');
             var $goodName = $(this).parent().attr('name');
             var $goodPrice = $(this).parent().attr('price');
+            var $goodImg = $(this).parent().children('.items__item-link').children('img').attr('src');
+            console.log($goodImg);
             var $cartItem = $('.cart-and-account__itemName[itemId="' + $goodId + '"]')
             $.get('http://localhost:3000/goods/' + $goodId,
             {},
@@ -80,7 +83,8 @@ function buildCart() {
                         id: $goodId,
                         name: $goodName,
                         price: $goodPrice,
-                        quantity: 1
+                        quantity: 1,
+                        img: $goodImg
                     };
                     if ($cartItem.length) {
                         good.quantity = +$cartItem.attr('quantity') + 1
