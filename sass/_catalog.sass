@@ -37,11 +37,43 @@
     margin-top: 59px
   &__filters
     width: 243px
-    height: 100px
-    background-color: #ccc
+    height: 1000px
+    li
+      list-style-type: none
+      a
+        text-decoration: none
+        font-family: Lato
+        color: #6f6e6e
+        font-size: 14px
+        font-weight: 400
+        line-height: 33px
+        &:hover
+          border-bottom: 3px solid #ef5b70
   &__main
     width: 846px
     height: 100px
     background-color: #ccc
-  
-
+  &__filter-type
+    font-family: Lato
+    color: #ef5b70
+    font-size: 14px
+    font-weight: 700
+    border-left: solid 5px #ef5b70
+    padding-left: 11px
+    border-bottom: solid 1px #ebebeb
+    margin-bottom: 18px
+    line-height: 37px
+    display: block
+    &::-webkit-details-marker
+      display: none
+    &::after
+      content: '\25BC'
+      font-size: 16px
+      float: right
+      color: #6f6e6e
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+      -ms-transform: scaleY(0.5)
+    details[open] &::after
+      content: '\25B2'
+      color: #ef5b70
