@@ -1,9 +1,16 @@
+<?php
+$title='branD';
+$h1='<span>BRAN<span>D</span></span>';
+$year=date("Y");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>branD</title>
+    <title>
+        <?=$title?>
+    </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="site.css">
@@ -18,9 +25,7 @@
                         <div class="logo-and-search">
                             <a href="#" class="logo">
                         <img src="img/Group%202.png" alt="logo">
-                        <span>BRAN
-                            <span>D</span>
-                        </span>
+                        <h1><?=$h1?></h1>
                     </a>
                             <form class="search">
                                 <div class="drop-down-button">
@@ -580,7 +585,8 @@
             </div>
             <div class="footer-bottom">
                 <div class="container flex-bottom">
-                    <p>© 2018 Brand All Rights Reserved.</p>
+                    <p>©
+                        <?=$year?> Brand All Rights Reserved.</p>
                     <div class="icons">
                         <a href="#">
                         <i class="fab fa-facebook-f"></i>
